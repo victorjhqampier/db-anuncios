@@ -92,11 +92,11 @@ ademas que, las personas interesadas independientes podran crear sus cuentas per
 create table sucursales (
 	sucursal_id int not null auto_increment,
 	distrito_id INT not null,
-    numero int not null unique,
+    numero int not null unique, /*numero unico de los administradores*/
     logo varchar(80) not null,
 	nombre VARCHAR(80) not null,
 	direccion VARCHAR(80) not null,/*direccion de la sucursal*/
-	estado boolean not null default true,
+	estado boolean not null default true, /*púed estar baneado*/
 	created_at TIMESTAMP not null default current_timestamp,
     updated_at TIMESTAMP not null default current_timestamp,
     foreign key (distrito_id) references distritos (distrito_id),

@@ -247,14 +247,13 @@ insert into subcategorias (categoria_id, grupo_id) values
 select * from distritos
 where distrito = 'DESAGUADERO'
 insert into sucursales(distrito_id, numero, logo, nombre, direccion) values
-(1594, 1523, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', nombre, direccion),
-(1594, 1524, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', nombre, direccion),
+(1594, 1523, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LOS INCAS', 'Jr. los incas 156'),
+(1594, 1524, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LAKACOTA LIBRERIA', 'Jr. amazonas 123 segundo piso'),
+(1641, 1525, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LIBRERIA LA SOLUCION', 'Jr Andino 476'),
+(1641, 1526, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'MERCADO CENTRAL', 'Jr. Nicolas de Pierola 556'),
 
-(1641, 1525, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', nombre, direccion),
-(1641, 1526, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', nombre, direccion),
-
-(1635, 1527, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', nombre, direccion),
-(1635, 1528, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', nombre, direccion),
+(1635, 1527, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'MYZPALL SAC', 'Jr. Cojeviejas 1356'),
+(1635, 1528, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LIBRERIA DESAGUADERO', 'jr. Ammazonas 123 Sótano'),
 
 insert into  monedas values
 (1, 'S/','Nuevos Soles Peruano'),
