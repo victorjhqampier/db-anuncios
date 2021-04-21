@@ -45,7 +45,7 @@ create table permisos(/*---para los permisos de los botones leer, crear, actuali
 	permiso varchar (60) not null,
 	primary key (permiso_id)
 );
-
+/* todas las cuentas creadas en el sistema */
 create table cuentas (
 	cuenta_id int not null auto_increment,
 	persona_id INT not null,
@@ -60,8 +60,6 @@ create table cuentas (
     foreign key (permiso_id) references permisos(permiso_id),
 	primary key (cuenta_id)
 );
-
-/*PUBLISHMENT SERVICE*/
 
 create table categorias( /*compcategorias_C08*/
 	categoria_id int not null,
@@ -102,6 +100,14 @@ create table sucursales (
     foreign key (distrito_id) references distritos (distrito_id),
     primary key (sucursal_id)
 );
+/*cuentas que administran una sucursal*/
+create table x_cuenta_administradores(
+	cuenta_id int not null,
+    sucursal_id int not null,
+    foreign key (cuenta_id) references cuentas(cuenta_id),
+    foreign key (sucursal_id) references sucursales (sucursal_id),
+    primary key (cuenta_id, sucursal_id)    
+);
 
 create table monedas (/*soles y dolares*/
 	moneda_id int not null,
@@ -115,20 +121,23 @@ create table publicaciones (
 	publicacion_id int not null auto_increment,
     cuenta_id int not null,
     subcategoria_id int not null,
+    moneda_id int not null default 1,
     item_name varchar(50) not null,
     descripcion text not null,
-    num_contact varchar (20) not null, /*algun numero de cell*/
-    other_contact varchar(30) default '',
+    num_contact varchar (70) not null, /*algun numero de cell del anunciante*/
+    other_contact varchar(150) default '',
     precio double not null default 0.0,/*-1 = para usar en casos de intercambio; 0 = gratis*/
     start_date date not null, /*fecha de inicio*/
     end_date date not null, /*fecha de vencimiento*/
-    item_status bool not null default true, /*TRUE = ACITVO, FALSE = vencido*/
+    item_status bool not null default true, /*TRUE = ACITVO, FALSE = vencido --- ESTO SE ACTUALIZA COMPROBANDO LAS FECHAS*/
     created_at TIMESTAMP not null default current_timestamp, /* para auditoria*/
     updated_at TIMESTAMP not null default current_timestamp, /*para auditoria*/
     foreign key (cuenta_id) references cuentas (cuenta_id),
     foreign key (subcategoria_id) references subcategorias (subcategoria_id),
+    foreign key (moneda_id) references monedas (moneda_id),
     primary key (publicacion_id)
 );
+
 /*una publicacion puede tener muchas imagenes*/
 create table imagenes(
 	imagen_id int not null auto_increment,
@@ -138,4 +147,27 @@ create table imagenes(
     primary key (imagen_id)
 );
 
-select * from personas;
+/*UNA PUBLICACION PUEDE ESTARBEN VARIOS SUCURSALES || POR DEFECTO EL ANUNCIO VA ASOCIADO A LA SUCURSAL SERCANA*/
+/*esto se conoce como catalogo*/
+create table x_anuncios (
+	publicacion_id int not null, /*estos resgistros se deben borrar cuando la publicacion tiene un estado = false*/
+    sucursal_id int not null,
+    estado bool default true, /* cuando el anuncio fue sensurado*/
+    foreign key (publicacion_id) references publicaciones (publicacion_id),
+    foreign key (sucursal_id) references sucursales (sucursal_id),
+    primary key (publicacion_id, sucursal_id)    
+);
+
+/* vista vara ver las subcategorias*/
+create view v_subcategorias as
+	select su.*, g.grupo, g.muestra
+	from subcategorias su
+	inner join grupos g on su.grupo_id= g.grupo_id;
+
+/*vista para ver los anuncios para un determinado sucursal*/
+create view v_catalogos as
+    select x.publicacion_id, x.sucursal_id , x.estado anun_status, 
+	p.cuenta_id, p.subcategoria_id, p.moneda_id, p.item_name, p.descripcion, p.num_contact, p.other_contact, p.precio, p.start_date, p.end_date, p.item_status
+	from x_anuncios x
+	inner join publicaciones p on x.publicacion_id = p.publicacion_id
+	where x.estado = true;

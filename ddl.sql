@@ -204,6 +204,12 @@ insert into permisos values
 (15, 1111, 'LEER, ESCRIBIR, ACTUALIZAR, BORRAR');
 select * from permisos;
 
+insert into cuentas (persona_id, permiso_id, correo, pass, passini) values
+(1, 15, 'victorjhampier@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b'),
+(2, 15, 'jaraperdo_345@hotmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b'),
+(3, 15, 'claret_35_maria5@hotmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b');
+select * from cuentas
+
 insert into categorias values
 (1,'Vehículos'),
 (2,'Casas/Departamentos'),
@@ -244,20 +250,59 @@ insert into subcategorias (categoria_id, grupo_id) values
 (9, 11), (9, 13),
 (10, 1), (10, 2);
 
-select * from distritos
-where distrito = 'DESAGUADERO'
 insert into sucursales(distrito_id, numero, logo, nombre, direccion) values
 (1594, 1523, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LOS INCAS', 'Jr. los incas 156'),
 (1594, 1524, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LAKACOTA LIBRERIA', 'Jr. amazonas 123 segundo piso'),
 (1641, 1525, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LIBRERIA LA SOLUCION', 'Jr Andino 476'),
 (1641, 1526, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'MERCADO CENTRAL', 'Jr. Nicolas de Pierola 556'),
-
 (1635, 1527, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'MYZPALL SAC', 'Jr. Cojeviejas 1356'),
-(1635, 1528, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LIBRERIA DESAGUADERO', 'jr. Ammazonas 123 Sótano'),
+(1635, 1528, 'https://de10.com.mx/sites/default/files/2018/07/18/queen_portada.jpg', 'LIBRERIA DESAGUADERO', 'jr. Ammazonas 123 Sótano');
+select * from sucursales;
 
+insert into x_cuenta_administradores values (2,2),(3,3);
+ 
 insert into  monedas values
 (1, 'S/','Nuevos Soles Peruano'),
 (2, 'U$','Dolares Americanos'),
 (3, '€','EUROS');
 
-select * from monedas;
+insert into publicaciones (cuenta_id, subcategoria_id, item_name, descripcion, num_contact, other_contact, precio, start_date, end_date) values
+(1, 1, 'Yamaha R15', '-Marca : YAMAHA -Modelo: R15 -Año: 2018 -Kilometraje: 12,000 km -Uso particular. -Primer y único dueño -Con llaves originales -Con manijas regulables 15 yamaha -Slider -Con extras', 'WhatsApp 5624585112', 'fb.com/user=1451164134', 11500.00, '2021/04/21', '2021/06/21'),
+(2, 1, 'H1 del año modelo 2016', 'Vendo por emergencia  H1 del año modelo 2016 en muy buen estado, llantas nuevas, pintura original. Combustible gasolinero , el precio es 16,000 dólares conversable', '968546915', 'fb.com/user=1451164134', 16000.00, '2021/04/21', '2021/06/21'),
+(3, 1, 'Pulsar 200', 'Pulsar ns 200,bien conservado del año 2014_2015, llantas y sistema de arrastre nuevos, todo ok, llamar al número [hidden information],la moto cuenta placa y con tarjeta electrónica, a contrato privado. Contestare solo llamadas gracias', '968546916', 'fb.com/user=1451164134', 6500.00, '2021/04/21', '2021/06/21'),
+(2, 1, 'HYUNDAI ACCEND AÑO 2012 VERSION 2013', 'VENDO HYUNDAI ACCEND AÑO 2012 USO PARTICULAR CONCERVADO PRECIO 7850$ DOLARES  CONVERSABLE', '968546917', 'fb.com/user=1451164134', 7850.00, '2021/04/21', '2021/06/21'),
+(3, 1, '2010 Suzuki Grand Vitara', 'POR MOTIVOS DE VIAJE VENDO ESTA SUV GRAND VITARA AÑO Y MODELO 2010  ASIENTOS FORRADO CON TACTO DE CUERO ECHO A SU MEDIDA PAPELES EN REGLA LLANTAS NUEVAS', '968546918', 'fb.com/user=1451164134', 30000.00, '2021/04/21', '2021/06/21'),
+(3, 4, 'VIVIENDA RUSTICA CON 2 CUARTOS DE ADOBE', 'Vivienda rustica con luz, pozo, 2 cuartos, con proyecto de agua y desague a 21 mil dolares conversable, area 250mt2 con escritura autovaluo pagado hasta 2021', '968546923', 'fb.com/user=1451164134', 75000.00, '2021/04/21', '2021/06/21'),
+(2, 1, 'Escarabajito del año 80', 'Sin descripcion', '968546919', 'fb.com/user=1451164134', '6000.00', '2021/04/21', '2021/06/21'),
+(2, 9, 'Lote en venta 8x20', 'Interesados ubicado en Av Tintaya/ jr primero de mayo ref I.E.P CHILLA', '968546924', 'fb.com/user=1451164134', '80000.00', '2021/04/21', '2021/06/21'),
+(3, 7, 'Alquilo habitaciones de estreno', 'JULIACA : Alquilo habitación para persona sola, distrito San Miguel, Urb Mariano Melgar Jr. San Isidro 1044 Precio incluye *Luz *Internet ( Wi-fi ) * Agua Caliente', '968546920', 'fb.com/user=1451164134', 250.00, '2021/04/21', '2021/06/21'),
+(2, 5, ' Casa 5 habitaciones 2 baños', 'casa en alquiler todos los servicos incluidos', '968546921', 'fb.com/user=1451164134', 450.00, '2021/04/21', '2021/06/21'),
+(3, 7, 'Habitaciones amobladas', 'Se alquila habitaciones amobladas  con todos los servicios agua luz y cable, ubicado frente al terminal terrestre - Juliaca Mayor información', '968546922', 'fb.com/user=1451164134', 100.00, '2021/04/21', '2021/06/21'),
+(2, 7, 'HABITACION AMUEBLADA BAÑO PRIVADO', 'ALQUILER DE HABITACION AMUEBLADA BAÑO PRIVADO PARA PERSONA SOLA INCLUYE SERVICIOS DE AGUA, LUZ, CABLE E INTERNET VIA WIFI TIENE COCHERA UBICADO A 2 CUADRAS DEL PARQUE TRICICLISTA JR. ESPINAL CON JR. TITICACA SALIDA AREQUIPA', '968546915', 'fb.com/user=1451164134', '200.00', '2021/04/21', '2021/06/21'),
+(3, 9, 'Lote de 10x20 urb. Santa maría', 'Vendo un lote de 10x20 urb santa maría. Por su quinta del príncipe sandino. 25000 soles papeles en regla. Excelente ubicación.', '968546925', 'fb.com/user=1451164134', 25000.00, '2021/04/21', '2021/06/21'),
+(2, 9, '13 LOTES CERCA AL MERCADO METROPOLITANO', 'REMATO  14 LOTES  CERCA AL MERCADO METROPOLITANO Y 2 CIRCUNVALACIÓN cerca ala  final LINEA 24', '968546926', 'fb.com/user=1451164134', 38000.00, '2021/04/21', '2021/06/21'),
+(3, 9, 'Lote salida Puno', 'Venta de lote por la salida lampa  km 5 serca de revisiones tecnicas san martin  a una cuadra de la', '968546927', 'fb.com/user=1451164134', 39000, '2021/04/21', '2021/06/21'),
+(3, 13, 'Promotora de Ventas Temporal', 'Tiendas del Barrio Chino Cercado de', '968546928', 'fb.com/user=1451164134', 1000, '2021/04/21', '2021/06/21'),
+(2, 13, 'analista de créditos', 'COOPERATIVA DE AHORRO Y CREDITO LTDA MI FINANCIERA SE ENCUENTRA EN LA BUSQUEDA DE PERSONAS TALENTOSAS PARA FORMAR PARTE DE NUESTRA FAMILIA EN EL PUESTO', '968546929', 'fb.com/user=1451164134', 2500, '2021/04/21', '2021/06/21'),
+(3, 13, 'AYUDANTE DE PRODUCCIÓN', 'LA EMPRESA INTERNATIONAL LOGISTIC GROUP PERÚ SAC ACTUALMENTE SE ENCUENTRA EN LA BÚSQUEDA DE UN', '968546930', 'fb.com/user=1451164134', 1200, '2021/04/21', '2021/06/21');
+SELECT * FROM publicaciones;
+
+insert into x_anuncios (publicacion_id, sucursal_id) values
+(1, 1), (1, 3), (1, 4), (1, 5), (2, 2), (2, 3), (2, 4), (2, 6), (3, 2), (3, 3), (3, 5), (3, 6), (4, 2), (4, 3), (4, 5), (4, 6), (5, 2), (5, 3), (5, 4), 
+(5, 5), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (8, 2), (8, 3), (8, 4), (9, 2), (9, 3), (9, 4), (9, 6), (10, 2), 
+(10, 3), (10, 5), (10, 6), (11, 2), (11, 3), (11, 4), (11, 5), (11, 6), (12, 2), (12, 3), (12, 4), (12, 5), (12, 6), (13, 2), (13, 4), (13, 5), (13, 6), 
+(14, 2), (14, 3), (14, 4), (14, 5), (14, 6), (15, 2), (15, 3), (15, 4), (15, 5), (16, 2), (16, 3), (16, 4), (16, 5), (16, 6), (17, 2), (17, 3), (17, 4), 
+(17, 5), (18, 2), (18, 3), (18, 4), (18, 6);
+select * from x_anuncios;
+
+/*algunas consultas*/
+
+/*ver subcategorias de la categoria VEHICULOS = 1*/
+SELECT * FROM categorias;
+select * from v_subcategorias
+where categoria_id = 1;
+
+/*ver los item otorgados para la sucursal = 1*/
+/*OJO OJO = CADA SUCURSAL SIEMPRE PRIORISARÁ LAS PUBLICACIONES QUE SE CREARON EN SUS PROPIAS OFICINAS*/
+select * from v_catalogos
+where sucursal_id = 1;
